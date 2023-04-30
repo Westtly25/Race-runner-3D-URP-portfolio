@@ -14,6 +14,7 @@ namespace Assets.Scripts.Runtime.Save_System
     public class PlayerSaveData
     {
         public int HightScore { get; set; }
+        public int Money { get; set; }
         public Car[] Car { get; set; }
     }
 
@@ -21,31 +22,50 @@ namespace Assets.Scripts.Runtime.Save_System
     public class SaveService : IInitializable
     {
         private readonly FileProvider fileProvider;
-        private readonly JSonSaver jSonSaver;
+        private readonly IFileSaver jSonSaver;
 
         public SaveService()
         {
             this.fileProvider = new FileProvider();
-            this.jSonSaver = new JSonSaver();
+            this.jSonSaver = new JSonToFileSaver();
         }
 
         public void Initialize()
         {
             
         }
+
+        public void SaveData()
+        {
+
+        }
+
+        public void LoadData()
+        {
+
+        }
     }
 
-    public interface ISaver
+    public interface IFileSaver
     {
         bool TrySave(PlayerSaveData saveData);
         PlayerSaveData Load(string fileData);
     }
 
-    public class JSonSaver : ISaver
+    public class JSonToFileSaver : IFileSaver
     {
+        private const string fileName = "PlayerData";
+        private readonly string path;
+
+        public JSonToFileSaver()
+        {
+            path = Application.persistentDataPath + "/Saves/" + fileName + ".json";
+        }
+
         public bool TrySave(PlayerSaveData saveData)
         {
             var s = JsonConvert.SerializeObject(saveData);
+
             return false;
         }
 
@@ -59,14 +79,20 @@ namespace Assets.Scripts.Runtime.Save_System
 
     public class FileProvider
     {
-        public void ReadFile(string path)
+        public string ReadFile(string path)
         {
-
+            using (var fileStream = new StreamReader(path))
+            {
+                return fileStream.ReadToEnd();
+            }
         }
 
-        public void WriteFile(string path)
+        public void WriteFile(string path, string fileToSave)
         {
-
+            using (var fileStream = new StreamWriter(path))
+            {
+                fileStream.Write(fileToSave);
+            }
         }
     }
 }
