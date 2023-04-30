@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
+using Zenject;
 
 namespace Assets.Scripts.Runtime.Save_System
 {
@@ -17,7 +18,7 @@ namespace Assets.Scripts.Runtime.Save_System
     }
 
 
-    public class SaveService
+    public class SaveService : IInitializable
     {
         private readonly FileProvider fileProvider;
         private readonly JSonSaver jSonSaver;
@@ -26,6 +27,11 @@ namespace Assets.Scripts.Runtime.Save_System
         {
             this.fileProvider = new FileProvider();
             this.jSonSaver = new JSonSaver();
+        }
+
+        public void Initialize()
+        {
+            
         }
     }
 
