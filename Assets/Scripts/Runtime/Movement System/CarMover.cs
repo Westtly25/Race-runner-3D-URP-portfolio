@@ -11,12 +11,11 @@ public class CarMover : MonoBehaviour
     private Rigidbody rigidbody;
 
     [SerializeField, Range(0.1f, 10f)]
-    private float currentSpeed = 1f;
-
-    [SerializeField]
     private float maxSpeed = 10f;
 
     private IInputService inputService;
+
+    private Vector3 startPos;
 
     [Inject]
     public void Construct(IInputService inputService)
@@ -30,13 +29,25 @@ public class CarMover : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
+
+    float t = 0;
+
+    private void Update()
+    {
+        t += 0.01f * Time.deltaTime;
+    }
+
     private void FixedUpdate()
     {
         Vector2 direction = inputService.MovementAction.ReadValue<Vector2>();
 
-        rigidbody.Move(new Vector3(transform.position.x + direction.x * currentSpeed * Time.deltaTime,
-                                   transform.position.y,
-                                   transform.position.z + currentSpeed * Time.deltaTime),
-                                   Quaternion.identity);
+
+        float speed = Mathf.Lerp(0f, maxSpeed, t);
+        float xMove = Mathf.Clamp(transform.position.x + direction.x * (speed / 2), -8f, 8f);
+        float zMove = transform.position.z + speed;
+
+        Debug.Log(speed);
+
+        rigidbody.Move(new Vector3(xMove, transform.position.y, zMove), Quaternion.identity);
     }
 }

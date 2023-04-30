@@ -12,4 +12,15 @@ public class CarCharacteristics
 
     [SerializeField, Range(500f, 9999f)]
     private float mass;
+
+    [SerializeField, Range(100, 400)]
+    private float maxSpeed;
+}
+
+[Serializable]
+public struct VisualTuningData
+{
+    private Color bodyColor;
+    private Color accessoriesColor;
+    private Color windowsColor;
 }

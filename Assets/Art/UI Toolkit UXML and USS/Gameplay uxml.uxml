@@ -1,2 +1,25 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Art/UI%20Toolkit%20UXML%20and%20USS/MainStyle.uss?fileID=7433441132597879392&amp;guid=bda209c23031d3248b438f1f25f0ccf9&amp;type=3#MainStyle" />
+    <ui:VisualElement name="root-container" class="root-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="gameplay-container" class="gameplay-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+            <ui:VisualElement name="gameplay-container-header" class="gameplay-container-header" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+                <ui:ProgressBar value="22" title="my-progress" />
+                <ui:VisualElement name="race-info-container" class="race-info-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                    <ui:VisualElement name="race-display-container" class="race-display-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                        <ui:VisualElement name="race-display-container-item" class="race-display-container-item" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.5);">
+                            <ui:Label tabindex="-1" text="10000" display-tooltip-when-elided="true" class="race-display-container-item-label" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="race-display-container-item" class="race-display-container-item" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.5);">
+                            <ui:Label tabindex="-1" text="10000" display-tooltip-when-elided="true" class="race-display-container-item-label" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:Button display-tooltip-when-elided="true" name="pause-button" class="pause-button">
+                        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/d_secondarytabclosehover@2x.png?fileID=2800000&amp;guid=9aa4348290784b2468144a97eb15d8d7&amp;type=3#d_secondarytabclosehover@2x&apos;);" />
+                    </ui:Button>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="gameplay-container-body" class="gameplay-container-body" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>
