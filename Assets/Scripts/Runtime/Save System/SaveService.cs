@@ -8,6 +8,8 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
 using Zenject;
+using UniRx.Diagnostics;
+using Logger = UniRx.Diagnostics.Logger;
 
 namespace Assets.Scripts.Runtime.Save_System
 {
@@ -22,12 +24,18 @@ namespace Assets.Scripts.Runtime.Save_System
     public class SaveService : IInitializable
     {
         private readonly FileProvider fileProvider;
+        private readonly Logger logger;
         private readonly IFileSaver jSonSaver;
 
-        public SaveService()
+        private PlayerSaveData playerSaveData;
+
+        public PlayerSaveData PlayerSaveData => playerSaveData;
+
+        [Inject]
+        public SaveService(Logger loger)
         {
             this.fileProvider = new FileProvider();
-            this.jSonSaver = new JSonToFileSaver();
+            this.jSonSaver = new JSonToFileSaver(fileProvider);
         }
 
         public void Initialize()
@@ -37,49 +45,62 @@ namespace Assets.Scripts.Runtime.Save_System
 
         public void SaveData()
         {
-
+            if (jSonSaver.TrySave(playerSaveData))
+            {
+                logger.Log("Data saved successfully");
+            }
+            else logger.Error("Data not saved");
         }
 
         public void LoadData()
         {
-
+            playerSaveData = jSonSaver.Load();
         }
     }
 
     public interface IFileSaver
     {
         bool TrySave(PlayerSaveData saveData);
-        PlayerSaveData Load(string fileData);
+        PlayerSaveData Load();
     }
 
     public class JSonToFileSaver : IFileSaver
     {
-        private const string fileName = "PlayerData";
-        private readonly string path;
+        private const string fileName = "PlayerData.json";
+        private readonly FileProvider fileProvider;
 
-        public JSonToFileSaver()
+        public JSonToFileSaver(FileProvider fileProvider)
         {
-            path = Application.persistentDataPath + "/Saves/" + fileName + ".json";
+            this.fileProvider = fileProvider;
         }
 
         public bool TrySave(PlayerSaveData saveData)
         {
-            var s = JsonConvert.SerializeObject(saveData);
+            string sorializedData = JsonConvert.SerializeObject(saveData);
 
-            return false;
+            fileProvider.WriteFile(fileName, sorializedData);
+
+            return true;
         }
 
-        public PlayerSaveData Load(string fileData)
+        public PlayerSaveData Load()
         {
-            var loadedData = JsonConvert.DeserializeObject<PlayerSaveData>(fileData);
+            string file = fileProvider.ReadFile(fileName);
 
-            return loadedData;
+            return JsonConvert.DeserializeObject<PlayerSaveData>(file);
         }
     }
 
     public class FileProvider
     {
-        public string ReadFile(string path)
+        private readonly string path;
+
+        public FileProvider()
+        {
+            this.path = Application.persistentDataPath + "/Saves/";
+        }
+
+        public string ReadFile(string fileName)
         {
             using (var fileStream = new StreamReader(path))
             {
@@ -87,7 +108,7 @@ namespace Assets.Scripts.Runtime.Save_System
             }
         }
 
-        public void WriteFile(string path, string fileToSave)
+        public void WriteFile(string fileName, string fileToSave)
         {
             using (var fileStream = new StreamWriter(path))
             {

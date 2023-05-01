@@ -13,7 +13,7 @@ public class CarCharacteristics
     [SerializeField, Range(500f, 9999f)]
     private float mass;
 
-    [SerializeField, Range(100, 400)]
+    [SerializeField, Range(60f, 400f)]
     private float maxSpeed;
 }
 
