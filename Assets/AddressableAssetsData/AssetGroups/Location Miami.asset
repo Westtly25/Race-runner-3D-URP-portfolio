@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Location Miami
+  m_EditorClassIdentifier: 
+  m_GroupName: Location Miami
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 10a639b22503b9b4a9456f75f154dd35
+  m_SerializeEntries:
+  - m_GUID: 26bba1a6a9e248d45a1d258e447813fd
+    m_Address: Location segment 1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c67846803a446be47b4be927e96250a3
+    m_Address: Location segment 2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ccfbb2712b5ae0847aa8d5d935fdb474, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6b3a535c66bc462478902870ebe19c17, type: 2}
+    - {fileID: 11400000, guid: 7970bb5b3882f8e42869193c9f163d8e, type: 2}

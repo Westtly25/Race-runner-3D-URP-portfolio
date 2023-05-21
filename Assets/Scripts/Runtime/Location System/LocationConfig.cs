@@ -1,10 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Assets.Scripts.Runtime.Location_System
 {
-    [Serializable]
-    public class LocationConfig
+    [CreateAssetMenu(fileName = "New Location Config", menuName = "Project / Locations / Location Config", order = 1)]
+    public class LocationConfig : ScriptableObject
     {
         [SerializeField, Range(0, 255)]
         private byte id;
@@ -14,6 +15,9 @@ namespace Assets.Scripts.Runtime.Location_System
 
         [SerializeField, TextArea(4, 10)]
         private string description;
+
+        [SerializeField]
+        private AssetReference[] references;
 
         [SerializeField]
         private LocationSegment[] locationSegments;
