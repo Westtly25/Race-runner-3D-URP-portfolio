@@ -1,16 +1,8 @@
-﻿using System;
-using Zenject;
+﻿using Zenject;
 using UnityEngine;
 
 namespace Assets.Scripts.Runtime.Player_System
 {
-    public class PlayerCarFactory : IFactory<Car>
-    {
-        public Car Create()
-        {
-            throw new NotImplementedException();
-        }
-    }
 
     public class PlayerSpawner : MonoBehaviour
     {

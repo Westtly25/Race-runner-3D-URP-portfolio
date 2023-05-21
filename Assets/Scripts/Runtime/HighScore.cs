@@ -11,13 +11,14 @@ namespace Assets.Scripts.Runtime
 
         public int Value => value;
 
-        public HighScore()
+        public HighScore(int value)
         {
+            this.value = value;
         }
 
         public void UpdateValue(int value)
         {
-            this.value = value;
+            this.value += value;
         }
     }
 }
