@@ -1,19 +1,21 @@
 ﻿using System;
-using UnityEngine;
 using System.Collections.Generic;
 
 namespace Assets.Scripts.Runtime.Sound_System
 {
-    public interface ISoundService
-    {
-        void PlaySound(AudioClip audioClip, float volume = 1f);
-    }
-
     [Serializable]
     public class SoundService : ISoundService
     {
+        private readonly SoundPool soundPool;
 
-        public void PlaySound(AudioClip audioClip, float volume = 1f)
+        public SoundService() { }
+
+        public SoundService(SoundPool soundPool)
+        {
+            this.soundPool = soundPool;
+        }
+
+        public void PlaySound(SoundItem soundItem)
         {
         }
     }

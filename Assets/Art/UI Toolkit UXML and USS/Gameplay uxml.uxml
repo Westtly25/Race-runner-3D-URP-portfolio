@@ -3,8 +3,8 @@
     <ui:VisualElement name="root-container" class="root-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="gameplay-container" class="gameplay-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
             <ui:VisualElement name="gameplay-container-header" class="gameplay-container-header" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-                <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
-                <ui:ProgressBar value="22" title="my-progress" />
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-basis: 25%;" />
+                <ui:ProgressBar value="50" title="50" style="flex-basis: 50%;" />
                 <ui:VisualElement name="race-info-container" class="race-info-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                     <ui:VisualElement name="race-display-container" class="race-display-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
                         <ui:VisualElement name="race-display-container-item" class="race-display-container-item" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.5);">
@@ -15,7 +15,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:Button display-tooltip-when-elided="true" name="pause-button" class="pause-button">
-                        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/d_secondarytabclosehover@2x.png?fileID=2800000&amp;guid=9aa4348290784b2468144a97eb15d8d7&amp;type=3#d_secondarytabclosehover@2x&apos;);" />
+                        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Art/Sprites/Icons/pause.png?fileID=21300000&amp;guid=e3553b2e3dbf95b4b82e4d4a309929ad&amp;type=3#pause&apos;);" />
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>

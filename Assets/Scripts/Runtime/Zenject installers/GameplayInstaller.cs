@@ -1,9 +1,9 @@
 ﻿using Zenject;
 using UnityEngine;
-using UniRx.Diagnostics;
+using Logger = UniRx.Diagnostics.Logger;
+using Assets.Scripts.Runtime.Save_System;
 using Assets.Scripts.Runtime.Sound_System;
 using Assets.Scripts.Runtime.Location_System;
-using Logger = UniRx.Diagnostics.Logger;
 
 namespace Assets.Scripts.Runtime.Zenject_installers
 {
@@ -16,6 +16,9 @@ namespace Assets.Scripts.Runtime.Zenject_installers
         {
             BindLogger();
             BindInputService();
+            BindSoundService();
+            BindSaveService();
+            BindLocationSpawner();
         }
 
         private void BindLogger()
@@ -39,6 +42,14 @@ namespace Assets.Scripts.Runtime.Zenject_installers
         private void BindSoundService()
         {
             Container.BindInterfacesAndSelfTo<SoundService>()
+                     .FromNew()
+                     .AsSingle()
+                     .NonLazy();
+        }
+
+        public void BindSaveService()
+        {
+            Container.Bind<SaveService>()
                      .FromNew()
                      .AsSingle()
                      .NonLazy();

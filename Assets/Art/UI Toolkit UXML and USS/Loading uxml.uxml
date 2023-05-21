@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Art/Sprites/LoadingScreen.png?fileID=21300000&amp;guid=b242bf71e9827a14a894770dbdc39076&amp;type=3#LoadingScreen&apos;);" />
+    <ui:Label tabindex="-1" text="LOADING..." display-tooltip-when-elided="true" style="position: absolute; bottom: 40px; right: 100px; -unity-text-align: middle-left; font-size: 80px; color: rgb(253, 228, 197); -unity-font-style: bold-and-italic; text-shadow: 4px 4px 0 rgb(22, 28, 35);" />
+</ui:UXML>
